@@ -1,110 +1,192 @@
-let mensajePrincipal = confirm("Desea presupuestar su vivienda?");
+//Se le pregunta al Usuario si desea realizar la operacion
+let mensajePrincipal;
+
+do {
+    mensajePrincipal = confirm("Desea presupuestar su vivienda?");
+
+    if(!mensajePrincipal) {
+        alert("Cualquier consulta no dude en comunicarse con nuestros profesionales")
+    }
+
+}while(!mensajePrincipal)
 
 
-//Se le pide el Horario de consulta al Usuario 
-/*
-let horario = prompt("Ingrese el Horario de su consulta");
-if( horario >= 8 && horario <= 12 ){
-    horario = "Buenos dias,";   
-}
-else if ( horario > 12 && horario <= 20 ){
-    horario = "Buenas Tardes,";
-}
-else if( horario > 20 && horario <= 23 ||  horario >= 0 && horario < 8 ) {
-    horario = "Buenas Noches,";
-}
-else{
-    horario = "Ingrese horario correcto(Ejemplo: 17)";
-}
-*/
-let horario = prompt("Ingrese el Horario de su consulta");
+//Se le pide El horario al Usuario para Completar el mensaje final
+let horario;
 let mensajeHorario;
-switch(horario){
-    case (horario >= 8 && horario <= 12):
-        mensajeHorario = "Buenos Dias";
-        break;
+do {
+    horario = parseInt(prompt("Ingrese el Horario de su consulta"));
+    
+    if(contieneCaracterEspecial(horario)) {
+        alert("Debes ingresar un horario valido!")
+    }
+    
+} while(contieneCaracterEspecial(horario));
 
-    case ( horario > 12 && horario <= 20 ):
-        mensajeHorario = "Buenas Tardes";
-        break;
-
-    case ( horario > 20 && horario <= 23 ||  horario >= 0 && horario < 8 ):
-        mensajeHorario = "Buenas Noches";
-        break;
-
-    default:
-        mensajeHorario = "Horario Desconocido";
-        break;
+if( horario >= 8 && horario <= 12 ){
+    mensajeHorario = "Buenos Dias";
+}else if( horario > 12 && horario <= 20 ){
+    mensajeHorario = "Buenas Tardes";
+}else if ( horario > 20 && horario <= 23 ||  horario >= 0 && horario < 8 ){
+    mensajeHorario = "Buenas Noches";
+}else{
+    mensajeHorario = "Horario Desconocido";
 }
+
+function contieneCaracterEspecial(texto) {
+    const illegalCharacters = /[-,.(*&^%$ :;]/;
+    return illegalCharacters.test(texto) || !texto;
+}
+
+
 
 
 //Se le pide la Edad al Usuario
-let edadUsuario = prompt("Ingrese su Edad");
-if( isNaN( edadUsuario )){
-    edadUsuario = prompt("Ingrese un numero");
+let edadUsuario;
+
+
+do{
+    edadUsuario = parseInt(prompt("Ingrese su Edad"));
+
+    if( isNaN(edadUsuario)){
+        alert("Debes ingresar un numero");
+    }else if (edadUsuario < 18){
+        alert("Usted es menor de edad");
+    }
+
+}while(isNaN(edadUsuario) || edadUsuario < 18);
+
+
+
+solicitarDatos();
+
+
+function solicitarDatos(){
+
+    const nombre = "Alexis";
+    const password = "alexis123";
+    const email = "alexis@gmail.com";
+
+    let nombreUsuario = prompt("Ingrese su Usuario");
+    let passwordUsuario = prompt("Ingrese su Contraseña");
+    let emailUsuario = prompt("Ingrese su direccion email");
+
+
+    if(nombreUsuario === nombre && passwordUsuario === password && emailUsuario === email){
+
+        console.log("ingreso");
+        iniciarTipoObra();
+        
+
+    }else{
+
+        alert("El Usuario, Contraseña o email es invalida");
+
+    }
+
 
 }
-else{
-    edadUsuario = alert( edadUsuario >= 18 ? "Usted es mayor de edad" : "Usted es menor de edad" );
+
+
+
+function iniciarTipoObra(){
+
+    let finalizarTipoObra = true;
+
+
+    while(finalizarTipoObra){
+
+        let cod = prompt("Ingrese el Tipo de Obra que desea realizar");
+
+
+        if(cod <= 3){
+
+            let producto = obtenerProducto(cod);
+
+            if(producto){
+
+                alert("El Producto seleccionado es: " + producto);
+                break;
+    
+    
+            }else{
+    
+                alert("para el codigo" + cod + "no existe ningunn  producto");
+
+    
+            }
+
+
+
+        }else{
+    
+            alert("Ingrese un Codigo valido");
+
+
+        }
+
+
+    }
+
+
 }
 
 
-//Se le pide el Nombre al Usuario
-let nombre = prompt("Ingrese su Nombre");
-let nombreUsuario = "Alexis" || "Nicolas" || "Matias";
-if ( nombre == nombreUsuario ){
-    console.log("Nombre Correcto");
-}
-else{
-    console.log("Nombre Incorrecto");
-}
+
+function obtenerProducto(cod){
+
+    let producto;
+    switch(cod){
+
+        case "1":
+            producto = "Remodelacion Interior";
+            break;
+        
+        case "2":
+            producto = "Construccion de Vivienda";
+            break;
+
+        case "3":
+            producto = "Construccion de Complejos de Viviendas";
+            break;
+
+    
+    }
 
 
-//Se le pide el Apellido al Usuario
-let apellido = prompt("Ingrese su Apellido");
-let apellidoUsuario = "Zupichiatti" || "Martini" || "Perez";
-if ( apellido == apellidoUsuario ){
-    console.log("Apellido Correcto");
-}
-else{
-    console.log("Apellido Incorrecto");
-}
-
-
-//Se le pide la direccion de Email al Usuario
-let email = prompt("Ingrese su direccion de Email");
-if ( apellido == "az@gmail.com" || "nc@gmail.com" || "mp@gmail.com" ){
-    console.log("Email Correcto");
-}
-else{
-    console.log("Email Incorrecto");
-}
-
-
-//Se le piden los metros2 a Construir al Usuario
-let metrosAConstruir = prompt("Ingrese los metros2 que desea construir\nEl valor actual del m2 es: $98.000");
-if( isNaN( metrosAConstruir )){
-    metrosAConstruir = prompt("Ingrese un numero");
+    return producto;
 
 }
-else{
-    console.log("Numero Ingresado: " + metrosAConstruir)
-}
-let resultadoValor = 98000 * metrosAConstruir;
-let costo = confirm("El costo de su futura vivienda es:  $" + resultadoValor);
-
-
-let mensajeFinal = alert(mensajeHorario + " " +  nombre + " su consulta fue enviada con exito, en instante nos comunicamos con usted a la direccion de email " + email);
 
 
 
+
+const VALOR_M2 = 98000;
+let metrosAConstruir;
+
+do{
+    metrosAConstruir = prompt("Ingrese los metros2 que desea construir\nEl valor actual del m2 es: $" + VALOR_M2);
+
+    if( isNaN(metrosAConstruir)){
+        alert("Debes ingresar un numero");
+    }else if (metrosAConstruir <= 50 ){
+        alert("Los metros a construir deben ser mayor a 50m2");
+    }
+
+}while(isNaN(edadUsuario) || metrosAConstruir <= 50 );
+
+let resultadoValor = VALOR_M2 * metrosAConstruir;
 let cuotaSeis = resultadoValor + ((resultadoValor * 15) / 100);
 let cuotaSeisUN = cuotaSeis / 6;
-let cuotaDoce = resultadoValor + ((resultadoValor * 35) / 100);
+let cuotaDoce = resultadoValor + ((resultadoValor * 30) / 100);
 let cuotaDoceUN = cuotaSeis / 12;
 let cuotaVCuatro = resultadoValor + ((resultadoValor * 45) / 100);
 let cuotaVCuatroUN = cuotaSeis / 24;
 
-let cuotas = alert("Sus formas de pago son:\nContado: $" + resultadoValor + "\n6 Cuotas de: $" + cuotaSeisUN + " ($" + cuotaSeis + ")" + "\n12 Cuotas de: $" + cuotaDoceUN + " ($" + cuotaDoce + ")" + "\n24 Cuotas de: $" + cuotaVCuatroUN + " ($" + cuotaVCuatro + ")" );
+alert("Sus formas de pago son:\nContado: $" + resultadoValor + "\n6 Cuotas de: $" + cuotaSeisUN + " ($" + cuotaSeis + ")" + "\n12 Cuotas de: $" + cuotaDoceUN + " ($" + cuotaDoce + ")" + "\n24 Cuotas de: $" + cuotaVCuatroUN + " ($" + cuotaVCuatro + ")" );
 
 
+alert("El costo de su futura vivienda es: $" + resultadoValor);
+
+
+alert(mensajeHorario + " Alexis su consulta fue enviada con exito, en instante nos comunicamos con usted a la direccion de email alexis@gmail.com");
