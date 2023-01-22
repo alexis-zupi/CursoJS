@@ -1,18 +1,3 @@
-const inputSearch = document.querySelector("#inputSearch");
-//Filtramos pruductos para Buscador
-const filtrarProd = () => {
-    //let busquedaUsuario = inputSearch.value.trim().toLowerCase();
-    let resultadoBusqueda = productos.filter(prod => prod.nombre.includes(inputSearch.value.trim().toLowerCase()));
-    if (resultadoBusqueda.length > 0) {
-        cargarEtiqueta(resultadoBusqueda);
-    }
-}
-//Registramos el "Tipo de evento" en la funcion
-inputSearch.addEventListener("search", filtrarProd);
-
-
-
-//ESTE ES EL QUE LE VA
 const productoJs = [];
 fetch("./data.json")
 .then((resp) => resp.json())
@@ -23,6 +8,19 @@ fetch("./data.json")
     });
     cargarEtiqueta(dataProd);
     eventoBotones(dataProd);
+
+    const inputSearch = document.querySelector("#inputSearch");
+    //Filtramos pruductos para Buscador
+    const filtrarProd = () => {
+        //let busquedaUsuario = inputSearch.value.trim().toLowerCase();
+        let resultadoBusqueda = dataProd.filter(prod => prod.nombre.includes(inputSearch.value.trim().toLowerCase()));
+        if (resultadoBusqueda.length > 0) {
+            cargarEtiqueta(resultadoBusqueda);
+        }
+    }
+    //Registramos el "Tipo de evento" en la funcion
+    inputSearch.addEventListener("search", filtrarProd);
+
 });
 
 
@@ -35,8 +33,6 @@ function Producto(id, nombre, desc, precio, cantidad, img) {
     this.cantidad = cantidad;
     this.img = img;
 }
-
-
 
 const contEtiquetas = document.querySelector("#contenedor-etiq");
 //Cargamos los datos de las Etiquetas en el HTML
@@ -79,20 +75,6 @@ function eventoBotones() {
 
 }
 
-
-
-//Busco el producto seleccionado y los pusheo al carrito
-/*
-function agregarCarrito(prodId) {
-    let producto = productos.find((producto) => {
-        return producto.id === prodId;
-    });
-
-    carrito.push(producto);
-    renderCarrito();
-}
-*/
-
 //Calcular el precio total de la compra
 function calcularTotal() {
     let totalCarrito = document.getElementById("totalCompra")
@@ -100,9 +82,11 @@ function calcularTotal() {
         total += prod
         return total
     }, 0)
-    totalCarrito.innerHTML = `Total a pagar: ${precioTotal}`;
+    totalCarrito.innerHTML = `
+    <h4>Total a pagar<h4>
+    <p>$${precioTotal}</p>
+    `;
 }
-
 
 function agregarCarrito(id) {
     console.log(productoJs)
@@ -110,18 +94,19 @@ function agregarCarrito(id) {
     let productoCarrito = carrito.find(p => p.producto.id === id);
     if (productoCarrito) {
         productoCarrito.cantidad++
+        producto.precio = productoCarrito.precio * productoCarrito.cantidad
     }else{
         productoCarrito = {
             producto: producto,
-            cantidad: 1
+            cantidad: 1,
+            precio: producto.precio
         }
         carrito.push(productoCarrito);
     }
 
-    renderCarrito();
     calcularTotal();
+    renderCarrito();
 }
-
 
 //Cargo las etiquetas al HTML
 function renderCarrito() {
@@ -168,13 +153,14 @@ function eliminarCarrito(e) {
     let itemCarrito = carrito.find(item => item.producto.id === parseInt(e.target.id));
     if (itemCarrito && itemCarrito.cantidad > 1) {
         itemCarrito.cantidad--
+        itemCarrito.producto.precio = itemCarrito.precio * itemCarrito.cantidad
     }else{
         carrito = carrito.filter((itemCarrito) => {
             return itemCarrito.producto.id !== parseInt(e.target.id);    
         });
     }
-    renderCarrito();
     calcularTotal();
+    renderCarrito();
 
     eliminarProductoLocalStorage(e);
 }
