@@ -7,7 +7,7 @@ fetch("./data.json")
 
     });
     cargarEtiqueta(dataProd);
-    eventoBotones(dataProd);
+    eventoBotonCompra(dataProd);
 
     const inputSearch = document.querySelector("#inputSearch");
     //Filtramos pruductos para Buscador
@@ -16,6 +16,7 @@ fetch("./data.json")
         let resultadoBusqueda = dataProd.filter(prod => prod.nombre.includes(inputSearch.value.trim().toLowerCase()));
         if (resultadoBusqueda.length > 0) {
             cargarEtiqueta(resultadoBusqueda);
+            eventoBotonCompra(dataProd);
         }
     }
     //Registramos el "Tipo de evento" en la funcion
@@ -65,7 +66,7 @@ const cargarEtiqueta = (array) => {
 //Creo array vacio al que luego le carga los datos de productos seleccionados
 let carrito = [];
 //Traigo los datos obtenidos en el boton
-function eventoBotones() {
+function eventoBotonCompra() {
     const btnComprar = document.querySelectorAll(".btn-comprar");
     btnComprar.forEach((button) => {
         button.addEventListener("click", (e) => {
