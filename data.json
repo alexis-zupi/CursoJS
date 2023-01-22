@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "nombre": "remera adidas",
+        "desc": "Mangas cortas - Negra",
+        "precio": 100,
+        "cantidad": 1, 
+        "img": "./imagenes/shortadidas.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "remera nike",
+        "desc": "Mangas cortas - Amarilla",
+        "precio": 200, 
+        "cantidad": 1,
+        "img": "./imagenes/remeranike.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "remera puma",
+        "desc": "Mangas cortas - Gris",
+        "precio": 300, 
+        "cantidad": 1,
+        "img": "./imagenes/remerapuma.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "short adidas",
+        "desc": "con bolsillos - Negro",
+        "precio": 400,
+        "cantidad": 1,
+        "img": "./imagenes/remeraadidas.jpg" 
+    },
+    {
+        "id": 5,
+        "nombre": "short nike",
+        "desc": "sin bolsillos - Negro",
+        "precio": 500,
+        "cantidad": 1,
+        "img": "./imagenes/shortnike.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "short puma",
+        "desc": "con bolsillos - Negro",
+        "precio": 600, 
+        "cantidad": 1,
+        "img": "./imagenes/shortpuma.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "gorra adidas",
+        "desc": "golf - Negra",
+        "precio": 700, 
+        "cantidad": 1,
+        "img": "./imagenes/gorraadidas.jpg"
+    },
+    {
+        "id": 8,
+        "nombre": "gorra nike",
+        "desc": "golf - Negra",
+        "precio": 800,
+        "cantidad": 1,
+        "img": "./imagenes/gorranike.jpg"
+    }
+]

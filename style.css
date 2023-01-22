@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Textos*/
+h1{
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+h2{
+    color: #000;
+    text-align: center;
+    font-size: 25px;
+    margin: 40px 0;
+}
+
+h3{
+    color: red;
+    font-size: 20px;
+}
+
+h4{
+    color: blueviolet;
+    font-size: 22px;
+}
+
+p{
+    color: cadetblue;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+img{
+    height: 380px;
+    width: 300px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.parrafo-carrito{
+    color: blue;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/*Contenedores*/
+.contenedor-carrito{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.contenedor-carrito > div{
+    text-align: center;
+}
+
+.img-carrito{
+    height: 150px;
+    width: 150px;
+    border-radius: 15px;
+}
+
+.cont-redes{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+}
+
+#carrito{
+    width: 100px;
+    padding: 5px;
+}
+
+main > div{
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main > div input{
+    width: 100%;
+    padding: 7px 0 7px 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.contenedor-nav{
+    padding: 40px;
+    background-color: rgb(40, 40, 102);
+    text-align: center;
+}
+
+.contenedor-main{
+    justify-content: space-evenly;
+    background-color: aqua;
+    min-width: 380px;
+    max-width: 1500px;
+    margin: 40px auto;
+    padding: 40px;
+}
+
+#contenedor-etiq{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.contenedor-etiquetas{
+    background-color: blue;
+    width: 300px;
+    height: 550px;
+    border-radius: 30px;
+    margin: 25px;
+}
+
+.texto-etiquetas{
+    margin: 20px 15px 0;
+}
+
+.texto-etiquetas > div{
+    margin-top: 7px;
+}
+
+.contenedor-etiquetas button{
+    display: flex;
+    width: 250px;
+    padding: 5px;
+    margin: 10px auto;
+    justify-content: center;
+    border-radius: 10px;
+    transition: transform 0.5s ease-out;
+    background-color: burlywood ;
+}
+
+.contenedor-etiquetas button:hover{
+    transform: scale(1.06);
+}
+
+.contenedor-form {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: brown;
+    padding: 20px 50px;
+}
+
+.contenedor-form form, .formulario {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.formulario input {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.enviar-form {
+    width: 100px;
+    padding: 15px;
+    margin: 15px 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    transition: transform 0.5s ease-out;
+    border-radius: 10px;
+}
+
+.enviar-form:hover {
+    transform: scale(1.1);
+}
+
+.totalCompra{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.mensajeCompra{
+    background-color: rgb(240, 221, 197);
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    background-color: burlywood;
+    margin-top: 60px;
+    padding: 40px 0;
+    text-align: center;
+}
